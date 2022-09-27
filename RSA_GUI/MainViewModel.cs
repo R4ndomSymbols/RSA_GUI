@@ -11,10 +11,8 @@ using System.Windows.Input;
 
 namespace RSA_GUI
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : HeadViewModel
     {
-        private string _encrypted = string.Empty;
-        private string _decrypted = string.Empty;
         private RSAEncryption _rsa = new RSAEncryption();
 
         public MainViewModel()
@@ -143,23 +141,6 @@ namespace RSA_GUI
 
                 }, (o) => true);
             }
-        }
-
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        private void InvokeError(string message)
-        {
-            MessageBox.Show(message);
-        }
-        private void InvokeError(Exception e)
-        {
-            InvokeError(e.Message);
         }
 
         private string FormatKey((BigInteger, BigInteger) key)
