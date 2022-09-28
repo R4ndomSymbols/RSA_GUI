@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RSA_GUI.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace RSA_GUI
+namespace RSA_GUI.ViewModels
 {
     public class HeadViewModel : INotifyPropertyChanged
     {
@@ -70,18 +71,31 @@ namespace RSA_GUI
             {
                 return new DelegeteCommand((o) =>
                 {
-                    CurrentPageView = new MainViewModel();
+                    //CurrentPageView = new MainViewModel();
                     CurrentUserControl = new RSAControl();
                 }, (o) => true);
             }
         }
-        public ICommand ChangeToVM
+        public ICommand ChangeToAesVM
         {
             get
             {
-                return new DelegeteCommand((o) => CurrentPageView = new MainViewModel(), (o) => true);
+                return new DelegeteCommand(
+                (o) => CurrentUserControl = new AESControl(),            
+                (o) => true);
             }
         }
+
+        public ICommand ChangeToFourSquaresVM
+        {
+            get
+            {
+                return new DelegeteCommand(
+                (o) => CurrentUserControl = new FourSquaresControl(),
+                (o) => true);
+            }
+        }
+
 
         public ICommand Encrypt
         {

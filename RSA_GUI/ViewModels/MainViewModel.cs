@@ -8,8 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using RSA_GUI.Models;
 
-namespace RSA_GUI
+namespace RSA_GUI.ViewModels
 {
     public class MainViewModel : HeadViewModel
     {

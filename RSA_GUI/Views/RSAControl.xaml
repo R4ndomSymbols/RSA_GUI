@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:RSA_GUI"
+             xmlns:local="clr-namespace:RSA_GUI.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
@@ -36,9 +36,9 @@
             <TextBox Text="{Binding KeyLength}" VerticalAlignment="Center" Width="40" Margin="10 0 10 0"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
-            <Button Content="Генерация ключей" Margin="5" Command="{Binding GenerateKeys}"/>
-            <Button Content="Шифровать" Margin="5" Command="{Binding Encrypt}"/>
-            <Button Content="Дешифровать" Margin="5" Command="{Binding Decrypt}"/>
+            <Button Content="Генерация ключей" Margin="5" Command="{Binding GenerateKeys}" Style="{StaticResource mrgBtn}"/>
+            <Button Content="Шифровать" Margin="5" Command="{Binding Encrypt}" Style="{StaticResource mrgBtn}"/>
+            <Button Content="Дешифровать" Margin="5" Command="{Binding Decrypt}" Style="{StaticResource mrgBtn}"/>
         </StackPanel>
     </Grid>
 </UserControl>

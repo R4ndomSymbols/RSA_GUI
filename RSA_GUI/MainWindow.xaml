@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RSA_GUI"
+        xmlns:local="clr-namespace:RSA_GUI.ViewModels"
         mc:Ignorable="d"
        
         
@@ -20,8 +20,11 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="0">
-            <Button Content="RSA" Command="{Binding ChangeToRsaVM}"/>
+            <Button Content="RSA" Command="{Binding ChangeToRsaVM}" Style="{StaticResource mrgBtn}"/>
+            <Button Content="FourSquares" Command="{Binding ChangeToFourSquaresVM}" Style="{StaticResource mrgBtn}"/>
+            <Button Content="AES" Command="{Binding ChangeToAesVM}" Style="{StaticResource mrgBtn}"/>
         </StackPanel>
+        
         <UserControl Grid.Row="1" Content="{Binding CurrentUserControl}"/>
 
 

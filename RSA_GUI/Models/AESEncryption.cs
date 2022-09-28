@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RSA_GUI
+namespace RSA_GUI.Models
 {
 
     public class AESEncryption

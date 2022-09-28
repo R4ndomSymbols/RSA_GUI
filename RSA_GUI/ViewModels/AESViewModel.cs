@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RSA_GUI.Models;
 
-namespace RSA_GUI
+namespace RSA_GUI.ViewModels
 {
     public class AESViewModel : HeadViewModel
     {
         private AESEncryption _aes = new AESEncryption();
+
+        public AESViewModel()
+        {
+            _decryptCommand = new DelegeteCommand((o) => Decrypted = _aes.Decrypt(Encrypted),
+                (o) => true);
+            _encryptCommand = new DelegeteCommand((o) => Encrypted = _aes.Encrypt(Decrypted),
+                (o) => true);
+        }
 
         public string Key
         {
