@@ -33,9 +33,9 @@ namespace RSA_GUI.Models
                 }
                 else if (value.Item1.Length >= alphabet.Count() || value.Item2.Length >= alphabet.Count())
                 {
-                    throw new ArgumentException("млишком длинный ключ (ключи)");
+                    throw new ArgumentException("Cлишком длинный ключ (ключи)");
                 }
-                _keys = value;
+                _keys = (FormatKey(value.Item1), FormatKey(value.Item2));
                 
                 AddCodeSquare(sq2, _keys.Item1);
                 AddCodeSquare(sq3, _keys.Item2);
@@ -46,6 +46,13 @@ namespace RSA_GUI.Models
         public FourSquaresEncryption()
         {
             alphabet = new List<char>();
+            for(int i = (int)_startSymbol; i<= (int)_endSymbol; i++)
+            {
+                alphabet.Add((char)i);
+            }
+            alphabet.AddRange(new char[] { ' ', '.', ',', '?' });
+
+
         }
         public string Decrypt(string toDecrypt)
         {
@@ -76,32 +83,19 @@ namespace RSA_GUI.Models
         }
         private void AddAlphabetSquare((int, int) startPoint) // x y
         {
-            char temp = _startSymbol;
+            int count = 0;
             for (int i = startPoint.Item1; i < startPoint.Item1 + 6; i++)
             {
                 for (int j = startPoint.Item2; j < startPoint.Item2 + 6; j++)
                 {
-                    if (temp <= _endSymbol)
-                    {
-                        fourSquares[i][j] = temp;
-                        if (alphabet.All(x => x != temp))
-                        {
-                            alphabet.Add(temp);
-                        }
-                        temp++;
-                    }
-                    else
-                    {
-                        fourSquares[i][j] = ' ';
-                        alphabet.Add(' ');
-                        break;
-                    }
+                    fourSquares[i][j] = alphabet[count++];
                 }
             }
         }
         private void AddCodeSquare((int, int) startPoint, string word) // x y
         {
             int index = 0;
+            int inAlphabetIndex = 0;
             string correctWord = word.ToUpper();
             char temp = _startSymbol;
             for (int i = startPoint.Item1; i < startPoint.Item1 + 6; i++)
@@ -113,26 +107,20 @@ namespace RSA_GUI.Models
                         fourSquares[i][j] = correctWord[index];
                         index++;
                     }
-                    else if (temp <= _endSymbol)
+                    else
                     {
-                        if (correctWord.Contains(temp))
+                        if (correctWord.Contains(alphabet[inAlphabetIndex]))
                         {
                             j--;
                         }
                         else
                         {
-                            fourSquares[i][j] = temp;
+                            fourSquares[i][j] = alphabet[inAlphabetIndex];
                         }
-                        temp++;
-                    }
-                    else
-                    {
-                        temp = _startSymbol;
-                        fourSquares[i][j] = temp++;
+                        inAlphabetIndex++;
                     }
                 }
             }
-
         }
 
         private string Getpair((char, char) pair, ((int, int), (int, int)) squaresPair)
@@ -164,8 +152,13 @@ namespace RSA_GUI.Models
 
         private string FormatInput(string toFormat)
         {
-            string incorrect = ",.?/[]() ";
-            return string.Concat(toFormat.Select(x => incorrect.Contains(x) ? "" : x.ToString())).ToUpper();
+            string incorrect = @"\/[]()";
+            return string.Concat(toFormat.ToUpper().Select(x => incorrect.Contains(x) ? "" : x.ToString()));
+        }
+
+        private string FormatKey(string key)
+        {
+            return string.Concat(key.Distinct());
         }
 
 

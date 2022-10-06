@@ -8,6 +8,7 @@
     <Application.Resources>
         <Style x:Key="mrgBtn" TargetType="Button">
             <Setter Property="Margin" Value = "3"/>
+            <Setter Property="Height" Value="25"/>
         </Style>
         
         <Style x:Key="textInput" TargetType="TextBox">
@@ -15,14 +16,25 @@
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="FontFamily" Value="Calibri"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="DeepSkyBlue"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <LinearGradientBrush>
+                        <GradientStopCollection>
+                            <GradientStop Color="Black" Offset="0"/>
+                            <GradientStop Color="DarkBlue" Offset="0.5"/>
+                            <GradientStop Color="LightBlue" Offset="1"/>
+                        </GradientStopCollection>
+                    </LinearGradientBrush>
+                </Setter.Value>    
+            </Setter>
         </Style>
 
         <Style x:Key="subs" TargetType="TextBlock">
-            <Setter Property="Margin" Value="0 5 0 1"/>
+            <Setter Property="Margin" Value="5 5 0 1"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="TextDecorations" Value="Underline"/>
         </Style>
         
         

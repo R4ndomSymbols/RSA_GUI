@@ -24,7 +24,7 @@
             <Button Content="Дешифровать" Command="{Binding Decrypt}" Style="{StaticResource mrgBtn}"/>
         </StackPanel>
 
-        <TextBlock Grid.Row="1" Text="Ключ"/>
+        <TextBlock Grid.Row="1" Text="Ключ" Style="{StaticResource subs}"/>
         <TextBox Grid.Row="2" Text="{Binding Keys}" Style="{StaticResource textInput}"/>
 
 
