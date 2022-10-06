@@ -18,7 +18,7 @@
 
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="Шифровать" Command="{Binding Encrypt}" Style="{StaticResource mrgBtn}"/>
-            <Button Content="Дешифровать" Command="{Binding Encrypt}" Style="{StaticResource mrgBtn}"/>
+            <Button Content="Дешифровать" Command="{Binding Decrypt}" Style="{StaticResource mrgBtn}"/>
         </StackPanel>
         
         
@@ -34,15 +34,15 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Вектор VI"/>
-            <TextBlock Grid.Row="0" Grid.Column="1" Text="Ключ"/>
-            <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding IV}" TextWrapping="Wrap" IsReadOnly="True"/>
-            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Key}" TextWrapping="Wrap" IsReadOnly="True"/>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Вектор VI" Style="{StaticResource subs}"/>
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="Ключ" Style="{StaticResource subs}"/>
+            <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding IV}" Style="{StaticResource textInput}" IsReadOnly="True"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Key}" Style="{StaticResource textInput}" IsReadOnly="True"/>
 
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="Дешифрованный текст"/>
-            <TextBlock Grid.Row="2" Grid.Column="1" Text="Шифрованный текст"/>
-            <TextBox Grid.Row="3" Grid.Column="0" Text="{Binding Decrypted}" TextWrapping="Wrap" IsReadOnly="True"/>
-            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Encrypted}" TextWrapping="Wrap" IsReadOnly="True"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Дешифрованный текст" Style="{StaticResource subs}"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="Шифрованный текст" Style="{StaticResource subs}" />
+            <TextBox Grid.Row="3" Grid.Column="0" Text="{Binding Decrypted}" Style="{StaticResource textInput}" />
+            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Encrypted}" Style="{StaticResource textInput}" />
 
 
         </Grid>

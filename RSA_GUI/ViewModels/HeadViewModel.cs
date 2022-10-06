@@ -19,8 +19,8 @@ namespace RSA_GUI.ViewModels
         protected string _encrypted = string.Empty;
         protected string _decrypted = string.Empty;
 
-        protected DelegeteCommand _encryptCommand;
-        protected DelegeteCommand _decryptCommand;
+        private DelegeteCommand _encryptCommand;
+        private DelegeteCommand _decryptCommand;
 
         public HeadViewModel CurrentPageView
         {
@@ -97,23 +97,8 @@ namespace RSA_GUI.ViewModels
         }
 
 
-        public ICommand Encrypt
-        {
-            get
-            {
-                return _encryptCommand;
-            }
-        }
-        public ICommand Decrypt
-        {
-            get
-            {
-                return _decryptCommand;
-            }
-        }
-
-
-
+        public virtual ICommand Encrypt { get; }
+        public virtual ICommand Decrypt { get; }
         public UserControl Cus { get => _cus; set => _cus = value; }
 
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")

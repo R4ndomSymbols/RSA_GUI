@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using RSA_GUI.Models;
 
 namespace RSA_GUI.ViewModels
@@ -13,11 +14,22 @@ namespace RSA_GUI.ViewModels
 
         public AESViewModel()
         {
-            _decryptCommand = new DelegeteCommand((o) => Decrypted = _aes.Decrypt(Encrypted),
-                (o) => true);
-            _encryptCommand = new DelegeteCommand((o) => Encrypted = _aes.Encrypt(Decrypted),
+
+        }
+
+        public override ICommand Decrypt
+        {
+            get => new DelegeteCommand((o) => Decrypted = _aes.Decrypt(Encrypted),
                 (o) => true);
         }
+
+        public override ICommand Encrypt
+        {
+            get => new DelegeteCommand((o) => Encrypted = _aes.Encrypt(Decrypted),
+                (o) => true);
+        }
+
+
 
         public string Key
         {

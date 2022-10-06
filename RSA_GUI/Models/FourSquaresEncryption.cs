@@ -23,6 +23,10 @@ namespace RSA_GUI.Models
             get => _keys;
             set
             {
+                Reset();
+                AddAlphabetSquare(sq1);
+                AddAlphabetSquare(sq4);
+
                 if (value.Item1.Any(x => !alphabet.Contains(x)) || value.Item2.Any(x => !alphabet.Contains(x)))
                 {
                     throw new ArgumentException("Недопустимый ключ (ключи)");
@@ -32,9 +36,7 @@ namespace RSA_GUI.Models
                     throw new ArgumentException("млишком длинный ключ (ключи)");
                 }
                 _keys = value;
-                Reset();
-                AddAlphabetSquare(sq1);
-                AddAlphabetSquare(sq4);
+                
                 AddCodeSquare(sq2, _keys.Item1);
                 AddCodeSquare(sq3, _keys.Item2);
 
@@ -47,17 +49,19 @@ namespace RSA_GUI.Models
         }
         public string Decrypt(string toDecrypt)
         {
+            string correct = FormatInput(toDecrypt);
             StringBuilder result = new StringBuilder();
-            for (int i = 0; i < toDecrypt.Length; i += 2)
+            for (int i = 0; i < correct.Length; i += 2)
             {
-                result.Append(Getpair((toDecrypt[i], toDecrypt[i + 1]), (sq2, sq3)));
+                result.Append(Getpair((correct[i], correct[i + 1]), (sq2, sq3)));
             }
             return result.ToString();
         }
 
         public string Encrypt(string toEncrypt)
         {
-            string corrected = toEncrypt.ToUpper() + (toEncrypt.Length % 2 != 0 ? "А" : "");
+            string corrected = FormatInput(toEncrypt);
+            corrected += corrected.Length % 2 != 0 ? "А" : "";
             StringBuilder result = new StringBuilder();
             for (int i = 0; i < corrected.Length; i += 2)
             {
@@ -157,6 +161,13 @@ namespace RSA_GUI.Models
         {
             fourSquares = new char[12].Select(x => new char[12]).ToArray();
         }
+
+        private string FormatInput(string toFormat)
+        {
+            string incorrect = ",.?/[]() ";
+            return string.Concat(toFormat.Select(x => incorrect.Contains(x) ? "" : x.ToString())).ToUpper();
+        }
+
 
     }
 }

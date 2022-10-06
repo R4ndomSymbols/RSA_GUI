@@ -9,5 +9,22 @@
         <Style x:Key="mrgBtn" TargetType="Button">
             <Setter Property="Margin" Value = "3"/>
         </Style>
+        
+        <Style x:Key="textInput" TargetType="TextBox">
+            <Setter Property="Margin" Value="5 0 5 5"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="DeepSkyBlue"/>
+        </Style>
+
+        <Style x:Key="subs" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0 5 0 1"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+        </Style>
+        
+        
     </Application.Resources>
 </Application>
