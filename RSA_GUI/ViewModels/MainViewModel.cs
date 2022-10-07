@@ -51,6 +51,8 @@ namespace RSA_GUI.ViewModels
                     InvokeError(ex.Message);
                 }
                 NotifyPropertyChanged();
+                NotifyPropertyChanged(nameof(Decrypt));
+                NotifyPropertyChanged(nameof(Encrypt));
             }
         }
         public string PrivateKey {
@@ -66,6 +68,8 @@ namespace RSA_GUI.ViewModels
                     InvokeError(ex.Message);
                 }
                 NotifyPropertyChanged();
+                NotifyPropertyChanged(nameof(Decrypt));
+                NotifyPropertyChanged(nameof(Encrypt));
             }
         }
         public string KeyLength

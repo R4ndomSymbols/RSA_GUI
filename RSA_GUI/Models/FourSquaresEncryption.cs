@@ -56,7 +56,7 @@ namespace RSA_GUI.Models
         }
         public string Decrypt(string toDecrypt)
         {
-            string correct = FormatInput(toDecrypt);
+            string correct = toDecrypt;
             StringBuilder result = new StringBuilder();
             for (int i = 0; i < correct.Length; i += 2)
             {
@@ -152,8 +152,7 @@ namespace RSA_GUI.Models
 
         private string FormatInput(string toFormat)
         {
-            string incorrect = @"\/[]()";
-            return string.Concat(toFormat.ToUpper().Select(x => incorrect.Contains(x) ? "" : x.ToString()));
+            return string.Concat(toFormat.ToUpper().Select(x => !alphabet.Contains(x)  ? "" : x.ToString()));
         }
 
         private string FormatKey(string key)
